@@ -1,0 +1,186 @@
+---
+# ====== Page: Employee Count Per Supervisor =================
+id: 21
+identification: 
+  name: Employee Count Per Supervisor
+  alias: EMPLOYEE-COUNT-PER-SUPERVISOR
+  title: Employee Count Per Supervisor
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 33844468912067721740
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 27187953482677778523
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Employee Count Per Supervisor ===============
+  id: 33844469630916721741
+  identification: 
+    name: Employee Count Per Supervisor
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 33844470013384721741
+    chart: 
+      type: Donut
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    settings: 
+      pie-selection-effect: Highlight
+
+    value: 
+      pie-chart-other-threshold: 0
+      format: Decimal
+      decimal-places: 0
+      format-scaling: None
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-value: true
+
+    legend: 
+      show: true
+      position: Automatic
+      hide-and-show-behavior: Rescale
+
+    series: 
+    - # ====== Series: Series 1 ====================================
+      id: 33844470502551721742
+      identification: 
+        name: Series 1
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT s.FIRST_NAME AS SUPERVISOR_NAME, COUNT(e.EMPLOYEE_ID) AS EMPLOYEE_COUNT
+          FROM STUDENT_INFO e
+          JOIN SUPERVISOR_INFO s ON e.SUPERVISOR_NAME = s.SUPERVISOR_ID
+          GROUP BY s.FIRST_NAME
+          ORDER BY EMPLOYEE_COUNT DESC;
+
+      column-mapping: 
+        label: SUPERVISOR_NAME
+        value: EMPLOYEE_COUNT
+
+      label: 
+        show: true
+        position: Automatic
+        display-as: Label
+

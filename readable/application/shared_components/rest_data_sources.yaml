@@ -1,0 +1,4240 @@
+---
+- # ====== REST Data Source: Currency Converter ================
+  id: 28418784870244163596
+  identification: 
+    name: Currency Converter
+
+  subscription: 
+    version-number: 15577800378921
+
+  source: 
+    type: HTTP
+    remote-server: www-amdoren-com # 28418779644440163592
+    url-path-prefix: /api/currency.php
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  rest-synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: currency_converter
+    pass-ecid: Application Default
+
+  parameters: 
+  - # ====== Parameter: apikey ===================================
+    id: 28418787508631163599
+    identification: 
+      name: apikey
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: true
+      value: 1b0691ac7ef04106888be376fc5e3880
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: base =====================================
+    id: 28418787966356163599
+    identification: 
+      name: base
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: USD
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: symbols ==================================
+    id: 28418788367397163599
+    identification: 
+      name: symbols
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: LKR
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: rates ====================================
+    id: 28418788741602163600
+    identification: 
+      name: rates
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: 50
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  data-profiles: 
+    id: 28418779852040163592
+    identification: 
+      name: Currency Converter
+
+    data-profile: 
+      format: JSON
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: ERROR =======================================
+      id: 28418780811619163594
+      identification: 
+        column-name: ERROR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: error
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: AMOUNT ======================================
+      id: 28418782054109163595
+      identification: 
+        column-name: AMOUNT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: amount
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: ERROR_MESSAGE ===============================
+      id: 28418782584042163595
+      identification: 
+        column-name: ERROR_MESSAGE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: error_message
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 28418786362172163598
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: converter =========================
+  id: 32317140557362353536
+  identification: 
+    name: converter
+
+  subscription: 
+    version-number: 15560559869551
+
+  source: 
+    type: HTTP
+    remote-server: api-freecurrencyapi-com # 32317139874191353528
+    url-path-prefix: /v1/latest
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  rest-synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: converter
+    pass-ecid: Application Default
+
+  data-profiles: 
+    id: 32317140002301353530
+    identification: 
+      name: converter
+
+    data-profile: 
+      format: JSON
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: MESSAGE =====================================
+      id: 32317140262358353533
+      identification: 
+        column-name: MESSAGE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: message
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 32317140763669353537
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: api converter new =================
+  id: 32317659662223402025
+  identification: 
+    name: api converter new
+
+  subscription: 
+    version-number: 15560562494154
+
+  source: 
+    type: HTTP
+    remote-server: api-freecurrencyapi-com # 32317139874191353528
+    url-path-prefix: v1/latest
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  rest-synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: api_converter_new
+    pass-ecid: Application Default
+
+  parameters: 
+  - # ====== Parameter: apikey ===================================
+    id: 32317660217527402026
+    identification: 
+      name: apikey
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: true
+      value: fca_live_U65iJVN9Fxl61hOzbewGsj9lW6FAbGB9Th2G8BQT
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: currencies ===============================
+    id: 32317660634181402027
+    identification: 
+      name: currencies
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: EUR,USD
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  data-profiles: 
+    id: 32317658849733402024
+    identification: 
+      name: api converter new
+
+    data-profile: 
+      format: JSON
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: DATA_EUR ====================================
+      id: 32317659013975402025
+      identification: 
+        column-name: DATA_EUR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: data.EUR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: DATA_USD ====================================
+      id: 32317659395428402025
+      identification: 
+        column-name: DATA_USD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: data.USD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 32317659815114402026
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: currency api converter ============
+  id: 45394045688889800670
+  identification: 
+    name: currency api converter
+
+  subscription: 
+    version-number: 15577826409373
+
+  source: 
+    type: HTTP
+    remote-server: api-currencyfreaks-com-v2-0-rates # 45394044322404800668
+    url-path-prefix: /latest
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  rest-synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: currency_api_converter
+    pass-ecid: Application Default
+
+  parameters: 
+  - # ====== Parameter: apikey ===================================
+    id: 45394046237451800671
+    identification: 
+      name: apikey
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: true
+      value: 1b0691ac7ef04106888be376fc5e3880
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: base =====================================
+    id: 45394046782803800671
+    identification: 
+      name: base
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: true
+      value: USD
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: symbols ==================================
+    id: 45394047193725800671
+    identification: 
+      name: symbols
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: LKR
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  - # ====== Parameter: rates ====================================
+    id: 45394047551615800671
+    identification: 
+      name: rates
+
+    parameter: 
+      type: URL Query String
+      data-type: String
+
+    value: 
+      direction: In
+      static: false
+      value: 50
+      required: false
+
+    advanced: 
+      use-for-row-search: false
+      omit-when-value-is-empty: false
+
+  data-profiles: 
+    id: 45394044589453800668
+    identification: 
+      name: currency api converter
+
+    data-profile: 
+      format: JSON
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: BASE ========================================
+      id: 45394044733500800668
+      identification: 
+        column-name: BASE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: base
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: DATE_ =======================================
+      id: 45394045023849800669
+      identification: 
+        column-name: DATE_
+
+      source: 
+        type: Data
+        data-type: TIMESTAMP WITH TIME ZONE
+        primary-key: false
+
+      parsing: 
+        path-expression: date
+        format-mask: 'YYYY"-"MM"-"DD" "HH24":"MI:SS.FF9TZH":"TZM'
+        has-time-zone: true
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: RATES.LKR ===================================
+      id: 45394045399659800669
+      identification: 
+        column-name: RATES.LKR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: rates.lkr
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 45394045874621800670
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+
+- # ====== REST Data Source: test currency =====================
+  id: 45453387760813484250
+  identification: 
+    name: test currency
+
+  subscription: 
+    version-number: 15577861103246
+
+  source: 
+    type: HTTP
+    remote-server: v6-exchangerate-api-com-v6-4d5aa707d21ed9457499183d # 45453336171065484223
+    url-path-prefix: /latest/LKR
+
+  settings: 
+    pagination-type: NO PAGINATION
+
+  rest-synchronization: 
+    job-is-active: false
+    local-table-owner: Parsing Schema
+
+  advanced: 
+    static-id: test_currency
+    pass-ecid: Application Default
+
+  data-profiles: 
+    id: 45453336363313484225
+    identification: 
+      name: test currency
+
+    data-profile: 
+      format: JSON
+      contains-single-row: false
+      use-raw-selectors: false
+
+    advanced: 
+      encoding: Database Character Set
+
+    columns: 
+    - # ====== Column: RESULT ======================================
+      id: 45453336557586484226
+      identification: 
+        column-name: RESULT
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: result
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 1
+        hidden: false
+
+    - # ====== Column: BASE_CODE ===================================
+      id: 45453336887868484226
+      identification: 
+        column-name: BASE_CODE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: base_code
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 2
+        hidden: false
+
+    - # ====== Column: TERMS_OF_USE ================================
+      id: 45453337184579484226
+      identification: 
+        column-name: TERMS_OF_USE
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: terms_of_use
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 3
+        hidden: false
+
+    - # ====== Column: DOCUMENTATION ===============================
+      id: 45453337496946484227
+      identification: 
+        column-name: DOCUMENTATION
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: documentation
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 4
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AED ========================
+      id: 45453337719848484227
+      identification: 
+        column-name: CONVERSION_RATES_AED
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AED
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 5
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AFN ========================
+      id: 45453338084309484227
+      identification: 
+        column-name: CONVERSION_RATES_AFN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AFN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 6
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ALL ========================
+      id: 45453338323509484227
+      identification: 
+        column-name: CONVERSION_RATES_ALL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ALL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 7
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AMD ========================
+      id: 45453338639339484227
+      identification: 
+        column-name: CONVERSION_RATES_AMD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AMD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 8
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ANG ========================
+      id: 45453338942247484227
+      identification: 
+        column-name: CONVERSION_RATES_ANG
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ANG
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 9
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AOA ========================
+      id: 45453339241254484227
+      identification: 
+        column-name: CONVERSION_RATES_AOA
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AOA
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 10
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ARS ========================
+      id: 45453339538125484227
+      identification: 
+        column-name: CONVERSION_RATES_ARS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ARS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 11
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AUD ========================
+      id: 45453339837864484228
+      identification: 
+        column-name: CONVERSION_RATES_AUD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AUD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 12
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AWG ========================
+      id: 45453340157282484228
+      identification: 
+        column-name: CONVERSION_RATES_AWG
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AWG
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 13
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_AZN ========================
+      id: 45453340430570484228
+      identification: 
+        column-name: CONVERSION_RATES_AZN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.AZN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 14
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BAM ========================
+      id: 45453340743373484228
+      identification: 
+        column-name: CONVERSION_RATES_BAM
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BAM
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 15
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BBD ========================
+      id: 45453341091838484228
+      identification: 
+        column-name: CONVERSION_RATES_BBD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BBD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 16
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BDT ========================
+      id: 45453341305900484228
+      identification: 
+        column-name: CONVERSION_RATES_BDT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BDT
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 17
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BGN ========================
+      id: 45453341689807484228
+      identification: 
+        column-name: CONVERSION_RATES_BGN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BGN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 18
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BHD ========================
+      id: 45453341965472484229
+      identification: 
+        column-name: CONVERSION_RATES_BHD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BHD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 19
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BIF ========================
+      id: 45453342268395484229
+      identification: 
+        column-name: CONVERSION_RATES_BIF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BIF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 20
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BMD ========================
+      id: 45453342584210484229
+      identification: 
+        column-name: CONVERSION_RATES_BMD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BMD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 21
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BND ========================
+      id: 45453342818033484229
+      identification: 
+        column-name: CONVERSION_RATES_BND
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BND
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 22
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BOB ========================
+      id: 45453343151017484229
+      identification: 
+        column-name: CONVERSION_RATES_BOB
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BOB
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 23
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BRL ========================
+      id: 45453343426501484229
+      identification: 
+        column-name: CONVERSION_RATES_BRL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BRL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 24
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BSD ========================
+      id: 45453343720780484229
+      identification: 
+        column-name: CONVERSION_RATES_BSD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BSD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 25
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BTN ========================
+      id: 45453344053718484229
+      identification: 
+        column-name: CONVERSION_RATES_BTN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BTN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 26
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BWP ========================
+      id: 45453344343801484229
+      identification: 
+        column-name: CONVERSION_RATES_BWP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BWP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 27
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BYN ========================
+      id: 45453344697407484230
+      identification: 
+        column-name: CONVERSION_RATES_BYN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BYN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 28
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_BZD ========================
+      id: 45453344994226484230
+      identification: 
+        column-name: CONVERSION_RATES_BZD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.BZD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 29
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CAD ========================
+      id: 45453345282415484230
+      identification: 
+        column-name: CONVERSION_RATES_CAD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CAD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 30
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CDF ========================
+      id: 45453345525855484230
+      identification: 
+        column-name: CONVERSION_RATES_CDF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CDF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 31
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CHF ========================
+      id: 45453345831295484230
+      identification: 
+        column-name: CONVERSION_RATES_CHF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CHF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 32
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CLP ========================
+      id: 45453346114794484230
+      identification: 
+        column-name: CONVERSION_RATES_CLP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CLP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 33
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CNY ========================
+      id: 45453346420422484230
+      identification: 
+        column-name: CONVERSION_RATES_CNY
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CNY
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 34
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_COP ========================
+      id: 45453346769613484231
+      identification: 
+        column-name: CONVERSION_RATES_COP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.COP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 35
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CRC ========================
+      id: 45453347004826484231
+      identification: 
+        column-name: CONVERSION_RATES_CRC
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CRC
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 36
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CUP ========================
+      id: 45453347377872484231
+      identification: 
+        column-name: CONVERSION_RATES_CUP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CUP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 37
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CVE ========================
+      id: 45453347603125484231
+      identification: 
+        column-name: CONVERSION_RATES_CVE
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CVE
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 38
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_CZK ========================
+      id: 45453347922719484231
+      identification: 
+        column-name: CONVERSION_RATES_CZK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.CZK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 39
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_DJF ========================
+      id: 45453348224290484231
+      identification: 
+        column-name: CONVERSION_RATES_DJF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.DJF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 40
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_DKK ========================
+      id: 45453348541939484231
+      identification: 
+        column-name: CONVERSION_RATES_DKK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.DKK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 41
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_DOP ========================
+      id: 45453348893236484231
+      identification: 
+        column-name: CONVERSION_RATES_DOP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.DOP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 42
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_DZD ========================
+      id: 45453349142514484231
+      identification: 
+        column-name: CONVERSION_RATES_DZD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.DZD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 43
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_EGP ========================
+      id: 45453349440257484232
+      identification: 
+        column-name: CONVERSION_RATES_EGP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.EGP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 44
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ERN ========================
+      id: 45453349766363484232
+      identification: 
+        column-name: CONVERSION_RATES_ERN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ERN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 45
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ETB ========================
+      id: 45453350033636484232
+      identification: 
+        column-name: CONVERSION_RATES_ETB
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ETB
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 46
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_EUR ========================
+      id: 45453350365448484232
+      identification: 
+        column-name: CONVERSION_RATES_EUR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.EUR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 47
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_FJD ========================
+      id: 45453350683639484232
+      identification: 
+        column-name: CONVERSION_RATES_FJD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.FJD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 48
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_FKP ========================
+      id: 45453350968694484232
+      identification: 
+        column-name: CONVERSION_RATES_FKP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.FKP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 49
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_FOK ========================
+      id: 45453351257607484232
+      identification: 
+        column-name: CONVERSION_RATES_FOK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.FOK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 50
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GBP ========================
+      id: 45453351568219484233
+      identification: 
+        column-name: CONVERSION_RATES_GBP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GBP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 51
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GEL ========================
+      id: 45453351821041484233
+      identification: 
+        column-name: CONVERSION_RATES_GEL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GEL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 52
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GGP ========================
+      id: 45453352149243484233
+      identification: 
+        column-name: CONVERSION_RATES_GGP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GGP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 53
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GHS ========================
+      id: 45453352408885484233
+      identification: 
+        column-name: CONVERSION_RATES_GHS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GHS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 54
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GIP ========================
+      id: 45453352759837484233
+      identification: 
+        column-name: CONVERSION_RATES_GIP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GIP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 55
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GMD ========================
+      id: 45453353056201484233
+      identification: 
+        column-name: CONVERSION_RATES_GMD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GMD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 56
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GNF ========================
+      id: 45453353313383484233
+      identification: 
+        column-name: CONVERSION_RATES_GNF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GNF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 57
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GTQ ========================
+      id: 45453353608571484234
+      identification: 
+        column-name: CONVERSION_RATES_GTQ
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GTQ
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 58
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_GYD ========================
+      id: 45453353914334484234
+      identification: 
+        column-name: CONVERSION_RATES_GYD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.GYD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 59
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_HKD ========================
+      id: 45453354254168484234
+      identification: 
+        column-name: CONVERSION_RATES_HKD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.HKD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 60
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_HNL ========================
+      id: 45453354572445484234
+      identification: 
+        column-name: CONVERSION_RATES_HNL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.HNL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 61
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_HRK ========================
+      id: 45453354862512484234
+      identification: 
+        column-name: CONVERSION_RATES_HRK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.HRK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 62
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_HTG ========================
+      id: 45453355159852484234
+      identification: 
+        column-name: CONVERSION_RATES_HTG
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.HTG
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 63
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_HUF ========================
+      id: 45453355453544484234
+      identification: 
+        column-name: CONVERSION_RATES_HUF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.HUF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 64
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_IDR ========================
+      id: 45453355726093484235
+      identification: 
+        column-name: CONVERSION_RATES_IDR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.IDR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 65
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ILS ========================
+      id: 45453356061829484235
+      identification: 
+        column-name: CONVERSION_RATES_ILS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ILS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 66
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_IMP ========================
+      id: 45453356355935484235
+      identification: 
+        column-name: CONVERSION_RATES_IMP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.IMP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 67
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_INR ========================
+      id: 45453356642389484235
+      identification: 
+        column-name: CONVERSION_RATES_INR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.INR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 68
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_IQD ========================
+      id: 45453356974649484235
+      identification: 
+        column-name: CONVERSION_RATES_IQD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.IQD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 69
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_IRR ========================
+      id: 45453357220666484235
+      identification: 
+        column-name: CONVERSION_RATES_IRR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.IRR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 70
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_ISK ========================
+      id: 45453357547787484235
+      identification: 
+        column-name: CONVERSION_RATES_ISK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ISK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 71
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_JEP ========================
+      id: 45453357821419484235
+      identification: 
+        column-name: CONVERSION_RATES_JEP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.JEP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 72
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_JMD ========================
+      id: 45453358133170484236
+      identification: 
+        column-name: CONVERSION_RATES_JMD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.JMD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 73
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_JOD ========================
+      id: 45453358432702484236
+      identification: 
+        column-name: CONVERSION_RATES_JOD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.JOD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 74
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_JPY ========================
+      id: 45453358733735484236
+      identification: 
+        column-name: CONVERSION_RATES_JPY
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.JPY
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 75
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KES ========================
+      id: 45453359030824484236
+      identification: 
+        column-name: CONVERSION_RATES_KES
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KES
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 76
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KGS ========================
+      id: 45453359366860484236
+      identification: 
+        column-name: CONVERSION_RATES_KGS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KGS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 77
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KHR ========================
+      id: 45453359625083484236
+      identification: 
+        column-name: CONVERSION_RATES_KHR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KHR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 78
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KID ========================
+      id: 45453359940844484236
+      identification: 
+        column-name: CONVERSION_RATES_KID
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KID
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 79
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KMF ========================
+      id: 45453360259983484236
+      identification: 
+        column-name: CONVERSION_RATES_KMF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KMF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 80
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KRW ========================
+      id: 45453360514889484237
+      identification: 
+        column-name: CONVERSION_RATES_KRW
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KRW
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 81
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KWD ========================
+      id: 45453360825998484237
+      identification: 
+        column-name: CONVERSION_RATES_KWD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KWD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 82
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KYD ========================
+      id: 45453361121858484237
+      identification: 
+        column-name: CONVERSION_RATES_KYD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KYD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 83
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_KZT ========================
+      id: 45453361410248484237
+      identification: 
+        column-name: CONVERSION_RATES_KZT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.KZT
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 84
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LAK ========================
+      id: 45453361793408484237
+      identification: 
+        column-name: CONVERSION_RATES_LAK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LAK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 85
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LBP ========================
+      id: 45453362070304484237
+      identification: 
+        column-name: CONVERSION_RATES_LBP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LBP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 86
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LKR ========================
+      id: 45453362367546484237
+      identification: 
+        column-name: CONVERSION_RATES_LKR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LKR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 87
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LRD ========================
+      id: 45453362605794484238
+      identification: 
+        column-name: CONVERSION_RATES_LRD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LRD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 88
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LSL ========================
+      id: 45453362992117484238
+      identification: 
+        column-name: CONVERSION_RATES_LSL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LSL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 89
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_LYD ========================
+      id: 45453363205813484238
+      identification: 
+        column-name: CONVERSION_RATES_LYD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.LYD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 90
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MAD ========================
+      id: 45453363583618484238
+      identification: 
+        column-name: CONVERSION_RATES_MAD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MAD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 91
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MDL ========================
+      id: 45453363841751484238
+      identification: 
+        column-name: CONVERSION_RATES_MDL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MDL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 92
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MGA ========================
+      id: 45453364103529484238
+      identification: 
+        column-name: CONVERSION_RATES_MGA
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MGA
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 93
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MKD ========================
+      id: 45453364488215484238
+      identification: 
+        column-name: CONVERSION_RATES_MKD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MKD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 94
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MMK ========================
+      id: 45453364774600484239
+      identification: 
+        column-name: CONVERSION_RATES_MMK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MMK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 95
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MNT ========================
+      id: 45453365048134484239
+      identification: 
+        column-name: CONVERSION_RATES_MNT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MNT
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 96
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MOP ========================
+      id: 45453365308044484239
+      identification: 
+        column-name: CONVERSION_RATES_MOP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MOP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 97
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MRU ========================
+      id: 45453365642295484239
+      identification: 
+        column-name: CONVERSION_RATES_MRU
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MRU
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 98
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MUR ========================
+      id: 45453365945531484239
+      identification: 
+        column-name: CONVERSION_RATES_MUR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MUR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 99
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MVR ========================
+      id: 45453366236194484239
+      identification: 
+        column-name: CONVERSION_RATES_MVR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MVR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 100
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MWK ========================
+      id: 45453366573126484239
+      identification: 
+        column-name: CONVERSION_RATES_MWK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MWK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 101
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MXN ========================
+      id: 45453366837268484240
+      identification: 
+        column-name: CONVERSION_RATES_MXN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MXN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 102
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MYR ========================
+      id: 45453367186353484240
+      identification: 
+        column-name: CONVERSION_RATES_MYR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MYR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 103
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_MZN ========================
+      id: 45453367406532484240
+      identification: 
+        column-name: CONVERSION_RATES_MZN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.MZN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 104
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NAD ========================
+      id: 45453367788133484240
+      identification: 
+        column-name: CONVERSION_RATES_NAD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NAD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 105
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NGN ========================
+      id: 45453368008483484240
+      identification: 
+        column-name: CONVERSION_RATES_NGN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NGN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 106
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NIO ========================
+      id: 45453368363337484240
+      identification: 
+        column-name: CONVERSION_RATES_NIO
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NIO
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 107
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NOK ========================
+      id: 45453368633949484240
+      identification: 
+        column-name: CONVERSION_RATES_NOK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NOK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 108
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NPR ========================
+      id: 45453368984410484240
+      identification: 
+        column-name: CONVERSION_RATES_NPR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NPR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 109
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_NZD ========================
+      id: 45453369203821484241
+      identification: 
+        column-name: CONVERSION_RATES_NZD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.NZD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 110
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_OMR ========================
+      id: 45453369543311484241
+      identification: 
+        column-name: CONVERSION_RATES_OMR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.OMR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 111
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PAB ========================
+      id: 45453369808896484241
+      identification: 
+        column-name: CONVERSION_RATES_PAB
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PAB
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 112
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PEN ========================
+      id: 45453370183059484241
+      identification: 
+        column-name: CONVERSION_RATES_PEN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PEN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 113
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PGK ========================
+      id: 45453370401109484241
+      identification: 
+        column-name: CONVERSION_RATES_PGK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PGK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 114
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PHP ========================
+      id: 45453370725182484241
+      identification: 
+        column-name: CONVERSION_RATES_PHP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PHP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 115
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PKR ========================
+      id: 45453371035656484241
+      identification: 
+        column-name: CONVERSION_RATES_PKR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PKR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 116
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PLN ========================
+      id: 45453371398835484242
+      identification: 
+        column-name: CONVERSION_RATES_PLN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PLN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 117
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_PYG ========================
+      id: 45453371668911484242
+      identification: 
+        column-name: CONVERSION_RATES_PYG
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.PYG
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 118
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_QAR ========================
+      id: 45453371914867484242
+      identification: 
+        column-name: CONVERSION_RATES_QAR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.QAR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 119
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_RON ========================
+      id: 45453372227734484242
+      identification: 
+        column-name: CONVERSION_RATES_RON
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.RON
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 120
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_RSD ========================
+      id: 45453372525609484242
+      identification: 
+        column-name: CONVERSION_RATES_RSD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.RSD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 121
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_RUB ========================
+      id: 45453372807547484242
+      identification: 
+        column-name: CONVERSION_RATES_RUB
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.RUB
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 122
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_RWF ========================
+      id: 45453373150609484242
+      identification: 
+        column-name: CONVERSION_RATES_RWF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.RWF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 123
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SAR ========================
+      id: 45453373448241484242
+      identification: 
+        column-name: CONVERSION_RATES_SAR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SAR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 124
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SBD ========================
+      id: 45453373707912484243
+      identification: 
+        column-name: CONVERSION_RATES_SBD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SBD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 125
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SCR ========================
+      id: 45453374044860484243
+      identification: 
+        column-name: CONVERSION_RATES_SCR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SCR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 126
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SDG ========================
+      id: 45453374365098484243
+      identification: 
+        column-name: CONVERSION_RATES_SDG
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SDG
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 127
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SEK ========================
+      id: 45453374659527484243
+      identification: 
+        column-name: CONVERSION_RATES_SEK
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SEK
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 128
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SGD ========================
+      id: 45453374920252484243
+      identification: 
+        column-name: CONVERSION_RATES_SGD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SGD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 129
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SHP ========================
+      id: 45453375289089484243
+      identification: 
+        column-name: CONVERSION_RATES_SHP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SHP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 130
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SLE ========================
+      id: 45453375547224484243
+      identification: 
+        column-name: CONVERSION_RATES_SLE
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SLE
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 131
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SLL ========================
+      id: 45453375854327484244
+      identification: 
+        column-name: CONVERSION_RATES_SLL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SLL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 132
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SOS ========================
+      id: 45453376112832484244
+      identification: 
+        column-name: CONVERSION_RATES_SOS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SOS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 133
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SRD ========================
+      id: 45453376477684484244
+      identification: 
+        column-name: CONVERSION_RATES_SRD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SRD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 134
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SSP ========================
+      id: 45453376785374484244
+      identification: 
+        column-name: CONVERSION_RATES_SSP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SSP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 135
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_STN ========================
+      id: 45453377065159484244
+      identification: 
+        column-name: CONVERSION_RATES_STN
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.STN
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 136
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SYP ========================
+      id: 45453377324786484244
+      identification: 
+        column-name: CONVERSION_RATES_SYP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SYP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 137
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_SZL ========================
+      id: 45453377668696484244
+      identification: 
+        column-name: CONVERSION_RATES_SZL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.SZL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 138
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_THB ========================
+      id: 45453377969589484245
+      identification: 
+        column-name: CONVERSION_RATES_THB
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.THB
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 139
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TJS ========================
+      id: 45453378236928484245
+      identification: 
+        column-name: CONVERSION_RATES_TJS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TJS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 140
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TMT ========================
+      id: 45453378586065484245
+      identification: 
+        column-name: CONVERSION_RATES_TMT
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TMT
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 141
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TND ========================
+      id: 45453378877677484245
+      identification: 
+        column-name: CONVERSION_RATES_TND
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TND
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 142
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TOP ========================
+      id: 45453379108718484245
+      identification: 
+        column-name: CONVERSION_RATES_TOP
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TOP
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 143
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TRY ========================
+      id: 45453379491061484245
+      identification: 
+        column-name: CONVERSION_RATES_TRY
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TRY
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 144
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TTD ========================
+      id: 45453379720227484245
+      identification: 
+        column-name: CONVERSION_RATES_TTD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TTD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 145
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TVD ========================
+      id: 45453380094632484245
+      identification: 
+        column-name: CONVERSION_RATES_TVD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TVD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 146
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TWD ========================
+      id: 45453380392122484245
+      identification: 
+        column-name: CONVERSION_RATES_TWD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TWD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 147
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_TZS ========================
+      id: 45453380607445484246
+      identification: 
+        column-name: CONVERSION_RATES_TZS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.TZS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 148
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_UAH ========================
+      id: 45453380965508484246
+      identification: 
+        column-name: CONVERSION_RATES_UAH
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.UAH
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 149
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_UGX ========================
+      id: 45453381288282484246
+      identification: 
+        column-name: CONVERSION_RATES_UGX
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.UGX
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 150
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_USD ========================
+      id: 45453381521702484246
+      identification: 
+        column-name: CONVERSION_RATES_USD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.USD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 151
+        hidden: false
+
+    - # ====== Column: CONVERSION_RATES_UYU ========================
+      id: 45453381875790484246
+      identification: 
+        column-name: CONVERSION_RATES_UYU
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.UYU
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 152
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_UZS ========================
+      id: 45453382120071484246
+      identification: 
+        column-name: CONVERSION_RATES_UZS
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.UZS
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 153
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_VES ========================
+      id: 45453382499436484246
+      identification: 
+        column-name: CONVERSION_RATES_VES
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.VES
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 154
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_VND ========================
+      id: 45453382740144484247
+      identification: 
+        column-name: CONVERSION_RATES_VND
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.VND
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 155
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_VUV ========================
+      id: 45453383015217484247
+      identification: 
+        column-name: CONVERSION_RATES_VUV
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.VUV
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 156
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_WST ========================
+      id: 45453383346017484247
+      identification: 
+        column-name: CONVERSION_RATES_WST
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.WST
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 157
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_XAF ========================
+      id: 45453383614531484247
+      identification: 
+        column-name: CONVERSION_RATES_XAF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.XAF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 158
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_XCD ========================
+      id: 45453383959233484247
+      identification: 
+        column-name: CONVERSION_RATES_XCD
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.XCD
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 159
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_XDR ========================
+      id: 45453384310212484247
+      identification: 
+        column-name: CONVERSION_RATES_XDR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.XDR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 160
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_XOF ========================
+      id: 45453384633611484247
+      identification: 
+        column-name: CONVERSION_RATES_XOF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.XOF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 161
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_XPF ========================
+      id: 45453384925593484247
+      identification: 
+        column-name: CONVERSION_RATES_XPF
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.XPF
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 162
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_YER ========================
+      id: 45453385253478484247
+      identification: 
+        column-name: CONVERSION_RATES_YER
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.YER
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 163
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_ZAR ========================
+      id: 45453385587653484248
+      identification: 
+        column-name: CONVERSION_RATES_ZAR
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ZAR
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 164
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_ZMW ========================
+      id: 45453385832948484248
+      identification: 
+        column-name: CONVERSION_RATES_ZMW
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ZMW
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 165
+        hidden: true
+
+    - # ====== Column: CONVERSION_RATES_ZWL ========================
+      id: 45453386119800484248
+      identification: 
+        column-name: CONVERSION_RATES_ZWL
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: conversion_rates.ZWL
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 166
+        hidden: true
+
+    - # ====== Column: TIME_LAST_UPDATE_UTC ========================
+      id: 45453386491868484248
+      identification: 
+        column-name: TIME_LAST_UPDATE_UTC
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: time_last_update_utc
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 167
+        hidden: true
+
+    - # ====== Column: TIME_NEXT_UPDATE_UTC ========================
+      id: 45453386729760484248
+      identification: 
+        column-name: TIME_NEXT_UPDATE_UTC
+
+      source: 
+        type: Data
+        data-type: VARCHAR2
+        maximum-length: 4000
+        primary-key: false
+
+      parsing: 
+        path-expression: time_next_update_utc
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 168
+        hidden: true
+
+    - # ====== Column: TIME_LAST_UPDATE_UNIX =======================
+      id: 45453387092751484248
+      identification: 
+        column-name: TIME_LAST_UPDATE_UNIX
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: time_last_update_unix
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 169
+        hidden: true
+
+    - # ====== Column: TIME_NEXT_UPDATE_UNIX =======================
+      id: 45453387349931484249
+      identification: 
+        column-name: TIME_NEXT_UPDATE_UNIX
+
+      source: 
+        type: Data
+        data-type: NUMBER
+        primary-key: false
+
+      parsing: 
+        path-expression: time_next_update_unix
+
+      remote-rest-data-source-server: 
+        filterable: true
+        is-common: true
+
+      advanced: 
+        sequence: 170
+        hidden: true
+
+  operations: 
+  - # ====== Operation: GET ======================================
+    id: 45453387921591484251
+    label: 
+      label: GET
+
+    operation: 
+      url-pattern: .
+      http-method: GET
+      database-operation: Fetch Rows
+
+    remote-cache: 
+      caching: Disabled
+
+    advanced: 
+      allow-fetching-all-rows: false
+      force-raise-http-404-error: false
+

@@ -1,0 +1,32 @@
+---
+- # ====== Email Template: Supervisor template =================
+  id: 33892161878535590196
+  identification: 
+    name: Supervisor template
+    email-subject: New Account has been created
+
+  html-format: 
+    header: |
+      <html>
+      <head>
+          <style>
+              /* Add any custom styles here */
+          </style>
+      </head>
+    body: |
+      <body>
+          <p>Dear Supervisor,</p>
+          <p>You have successfully registered as a supervisor to the Employee Management System.</p>
+          <p>Thank you for your patience.</p>
+          <p>Best regards,</p>
+          <p>The Employee Management System Team</p>
+      </body>
+      </html>
+      
+
+  advanced: 
+    static-id: SUPERVISOR_TEMPLATE
+
+  subscription: 
+    version-number: 15562390528507
+

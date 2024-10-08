@@ -1,0 +1,100 @@
+---
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 27188444302573778724
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 27188444604444778725
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 27188444917551778725
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 27188445252031778726
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 27188445598480778726
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: bg.png =====================
+  id: 27208637840597096464
+  identification: 
+    file-name: bg.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: avatar.png =================
+  id: 27212120756335162256
+  identification: 
+    file-name: avatar.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: bg.jpg =====================
+  id: 27281837511481025510
+  identification: 
+    file-name: bg.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: emp.png ====================
+  id: 28261986518616490245
+  identification: 
+    file-name: emp.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: pro.png ====================
+  id: 28261997558172493025
+  identification: 
+    file-name: pro.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: super.png ==================
+  id: 28262370856362237853
+  identification: 
+    file-name: super.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+

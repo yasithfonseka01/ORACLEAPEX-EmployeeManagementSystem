@@ -1,0 +1,49 @@
+---
+- # ====== REST Data Source Server: www-amdoren-com ============
+  id: 28418779644440163592
+  identification: 
+    name: www-amdoren-com
+
+  endpoint-url: 
+    url: 'https://www.amdoren.com/'
+
+  advanced: 
+    static-id: www_amdoren_com
+    prompt-on-install: false
+
+- # ====== REST Data Source Server: api-freecurrencyapi-com ====
+  id: 32317139874191353528
+  identification: 
+    name: api-freecurrencyapi-com
+
+  endpoint-url: 
+    url: 'https://api.freecurrencyapi.com/'
+
+  advanced: 
+    static-id: api_freecurrencyapi_com
+    prompt-on-install: false
+
+- # ====== REST Data Source Server: api-currencyfreaks-com-v2-0-
+  id: 45394044322404800668
+  identification: 
+    name: api-currencyfreaks-com-v2-0-rates
+
+  endpoint-url: 
+    url: 'https://api.currencyfreaks.com/v2.0/rates/'
+
+  advanced: 
+    static-id: api_currencyfreaks_com_v2_0_rates
+    prompt-on-install: false
+
+- # ====== REST Data Source Server: v6-exchangerate-api-com-v6-4
+  id: 45453336171065484223
+  identification: 
+    name: v6-exchangerate-api-com-v6-4d5aa707d21ed9457499183d
+
+  endpoint-url: 
+    url: 'https://v6.exchangerate-api.com/v6/4d5aa707d21ed9457499183d/'
+
+  advanced: 
+    static-id: v6_exchangerate_api_com_v6_4d5aa707d21ed9457499183d
+    prompt-on-install: false
+

@@ -1,0 +1,659 @@
+---
+# ====== Page: Reports =======================================
+id: 9
+identification: 
+  name: Reports
+  alias: REPORTS
+  title: Reports
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: REPORTS =====================================
+  id: 24851684185112753943
+  identification: 
+    name: REPORTS
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT 1 SL,
+             'https://cdn-icons-png.flaticon.com/512/7909/7909958.png' ICON,
+             'TOTAL EMPLOYEE' AS TITLE,
+             COUNT(*) AS TOTAL,
+             APEX_PAGE.GET_URL(p_page => 12) AS URL  -- Replace with the correct page ID for employees
+        FROM STUDENT_INFO
+      UNION ALL
+      
+      SELECT 2 SL,
+             'https://cdn-icons-png.flaticon.com/512/2856/2856359.png' ICON,
+             'TOTAL PROJECTS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 14) URL  -- Replace 11 with the correct page ID for projects
+        FROM PROJECT_INFO
+       UNION ALL
+       
+       SELECT 3 SL,
+             'https://cdn-icons-png.flaticon.com/512/1478/1478890.png' ICON,
+             'TOTAL SUPERVISORS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 16) URL  -- Replace 11 with the correct page ID for projects
+        FROM SUPERVISOR_INFO
+        UNION ALL
+       
+       SELECT 4 SL,
+             'https://cdn-icons-png.flaticon.com/512/4862/4862440.png' ICON,
+             'TOTAL CUSTOMERS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 20) URL  -- Replace 11 with the correct page ID for projects
+        FROM CUSTOMER_INFO;
+      
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--styleB
+    - t-Region-orderBy--center
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 24851684254098753944
+    appearance: 
+      layout: Grid
+      grid-columns: 2 Columns
+
+    card: 
+      primary-key-column-1: SL
+
+    title: 
+      advanced-formatting: false
+      column: TOTAL
+
+    subtitle: 
+      advanced-formatting: false
+      column: TITLE
+
+    body: 
+      advanced-formatting: false
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Image URL
+      image-url: '&ICON.'
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: Full Card ===================================
+      id: 24851684356750753945
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to URL
+        target: '&URL.'
+
+- # ====== Region: BASIC COMPANY DETAILS CHART =================
+  id: 24851684423244753946
+  identification: 
+    name: BASIC COMPANY DETAILS CHART
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 24851684554789753947
+    chart: 
+      type: Bar
+
+    appearance: 
+      orientation: Vertical
+      stack: false
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    multi-series-chart-data: 
+      fill-gaps-in-chart-data: true
+      sort-order: Label - Ascending
+      render-gap-as-zero: true
+
+    settings: 
+      zoom-and-scroll: No
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-group-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    series: 
+    - # ====== Series: New =========================================
+      id: 24851684616610753948
+      identification: 
+        name: New
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT 
+              'NUM OF EMPLOYEES' AS label,
+              COUNT(*) AS value
+          FROM 
+              STUDENT_INFO
+          WHERE 
+              PROJECT_NAME IS NOT NULL
+          
+          UNION
+          
+          SELECT 
+              'NUM OF PROJECTS' AS label,
+              COUNT(*) AS value
+          FROM 
+              PROJECT_INFO
+          WHERE 
+              PROJECT_NAME IS NOT NULL
+          
+          
+          UNION
+          
+          SELECT 
+              'NUM OF CUSTOMERS' AS label,
+              COUNT(*) AS value
+          FROM 
+              CUSTOMER_INFO
+          WHERE 
+              CUSTOMER_NAME IS NOT NULL;
+
+      column-mapping: 
+        label: LABEL
+        value: VALUE
+
+      appearance: 
+        assigned-to-y2-axis: false
+
+      label: 
+        show: false
+
+    axes: 
+    - # ====== Axis: x =============================================
+      id: 24851684738459753949
+      identification: 
+        name: x
+        show-axis: true
+
+      value: 
+        format-scaling: Automatic
+        baseline-scaling: Zero
+        scale: Linear
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+        rotation: true
+        position: Outside
+
+    - # ====== Axis: y =============================================
+      id: 24851684878116753950
+      identification: 
+        name: y
+        show-axis: true
+
+      value: 
+        format: Decimal
+        decimal-places: 0
+        format-scaling: None
+        baseline-scaling: Zero
+        scale: Linear
+
+      appearance: 
+        position: Automatic
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+
+- # ====== Region: Number Of Employees Per Team ================
+  id: 28437966970520614325
+  identification: 
+    name: Number Of Employees Per Team
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 28437967069920614326
+    chart: 
+      type: Bar
+
+    appearance: 
+      orientation: Vertical
+      stack: false
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    multi-series-chart-data: 
+      fill-gaps-in-chart-data: true
+      sort-order: Label - Ascending
+      render-gap-as-zero: true
+
+    settings: 
+      zoom-and-scroll: No
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-group-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    series: 
+    - # ====== Series: New =========================================
+      id: 28437967102738614327
+      identification: 
+        name: New
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT 
+              ti.TEAM_NAME,
+              COUNT(ta.MEMBER_NAME) AS MEMBER_COUNT
+          FROM 
+              TEAM_ALLOCATION ta
+          JOIN 
+              TEAM_INFO ti ON ta.TEAM_name = TO_CHAR(ti.ID)
+          GROUP BY 
+              ti.TEAM_NAME;
+
+      column-mapping: 
+        label: TEAM_NAME
+        value: MEMBER_COUNT
+
+      appearance: 
+        assigned-to-y2-axis: false
+
+      label: 
+        show: false
+
+    axes: 
+    - # ====== Axis: x =============================================
+      id: 28437967289569614328
+      identification: 
+        name: x
+        show-axis: true
+
+      value: 
+        format-scaling: Automatic
+        baseline-scaling: Zero
+        scale: Linear
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+        rotation: true
+        position: Outside
+
+    - # ====== Axis: y =============================================
+      id: 28437967358387614329
+      identification: 
+        name: y
+        show-axis: true
+
+      value: 
+        format: Decimal
+        decimal-places: 0
+        format-scaling: None
+        baseline-scaling: Zero
+        scale: Linear
+
+      appearance: 
+        position: Automatic
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+
+- # ====== Region: Number of Projects Per Team =================
+  id: 28437967422106614330
+  identification: 
+    name: Number of Projects Per Team
+    type: Chart
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 28437967570996614331
+    chart: 
+      type: Bar
+
+    appearance: 
+      orientation: Vertical
+      stack: false
+
+    layout: 
+      height: 400
+
+    data-cursor: 
+      cursor: Automatic
+      behavior: Automatic
+      dim-on-hover: true
+
+    multi-series-chart-data: 
+      fill-gaps-in-chart-data: true
+      sort-order: Label - Ascending
+      render-gap-as-zero: true
+
+    settings: 
+      zoom-and-scroll: No
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: true
+      show-series-name: true
+      show-group-name: true
+      show-value: true
+
+    legend: 
+      show: false
+
+    series: 
+    - # ====== Series: New =========================================
+      id: 28437967689516614332
+      identification: 
+        name: New
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: |
+          SELECT 
+              ti.TEAM_NAME,
+              COUNT(ta.PROJECT) AS PROJECT_COUNT
+          FROM 
+              PROJECT_ALLOCATION ta
+          JOIN 
+              TEAM_INFO ti ON ta.TEAM = ti.ID
+          GROUP BY 
+              ti.TEAM_NAME;
+
+      column-mapping: 
+        label: TEAM_NAME
+        value: PROJECT_COUNT
+
+      appearance: 
+        assigned-to-y2-axis: false
+
+      label: 
+        show: false
+
+    axes: 
+    - # ====== Axis: x =============================================
+      id: 28437967786331614333
+      identification: 
+        name: x
+        show-axis: true
+
+      value: 
+        format-scaling: Automatic
+        baseline-scaling: Zero
+        scale: Linear
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+        rotation: true
+        position: Outside
+
+    - # ====== Axis: y =============================================
+      id: 28437967840963614334
+      identification: 
+        name: y
+        show-axis: true
+
+      value: 
+        format: Decimal
+        decimal-places: 0
+        format-scaling: None
+        baseline-scaling: Zero
+        scale: Linear
+
+      appearance: 
+        position: Automatic
+
+      major-ticks: 
+        show: Yes
+
+      minor-ticks: 
+        show: false
+
+      tick-label: 
+        show: true
+

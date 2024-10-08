@@ -1,0 +1,308 @@
+---
+# ====== Page: Home ==========================================
+id: 1
+identification: 
+  name: Home
+  alias: HOME
+  title: Employee Information System
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Task Management =============================
+  id: 24851683821609753940
+  identification: 
+    name: Task Management
+    type: List
+
+  source: 
+    list: Activity Reports # 27188758362085779592
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Cards
+      template-options: 
+      - '#DEFAULT#'
+      - u-colors
+      - t-Cards--featured force-fa-lg
+      - t-Cards--displayIcons
+      - t-Cards--3cols
+      - t-Cards--hideBody
+      - t-Cards--iconsRounded
+      - t-Cards--animColorFill
+
+- # ====== Region: Access Control ==============================
+  id: 24851684000103753942
+  identification: 
+    name: Access Control
+    type: List
+
+  source: 
+    list: Access Control # 27188761070788779593
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      list-template: Tabs
+      template-options: 
+      - '#DEFAULT#'
+      - t-Tabs--large
+      - t-Tabs--pill
+      - t-Tabs--inlineIcons
+      - t-Tabs--fillLabels
+
+- # ====== Region: Employee Information System =================
+  id: 27188458003549778741
+  identification: 
+    name: Employee Information System
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  image: 
+    file-url: '#APP_FILES#icons/app-icon-512.png'
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: REPORTS =====================================
+  id: 57162324144835618863
+  identification: 
+    name: REPORTS
+    title: EMPLYEE DETAILS
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT 1 SL,
+             'https://cdn-icons-png.flaticon.com/512/7909/7909958.png' ICON,
+             'TOTAL EMPLOYEE' AS TITLE,
+             COUNT(*) AS TOTAL,
+             APEX_PAGE.GET_URL(p_page => 12) AS URL  -- Replace with the correct page ID for employees
+        FROM STUDENT_INFO
+      UNION ALL
+      
+      SELECT 2 SL,
+             'https://cdn-icons-png.flaticon.com/512/2856/2856359.png' ICON,
+             'TOTAL PROJECTS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 14) URL  -- Replace 11 with the correct page ID for projects
+        FROM PROJECT_INFO
+       UNION ALL
+       
+       SELECT 3 SL,
+             'https://cdn-icons-png.flaticon.com/512/1478/1478890.png' ICON,
+             'TOTAL SUPERVISORS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 16) URL  -- Replace 11 with the correct page ID for projects
+        FROM SUPERVISOR_INFO
+        UNION ALL
+       
+       SELECT 4 SL,
+             'https://cdn-icons-png.flaticon.com/512/4862/4862440.png' ICON,
+             'TOTAL CUSTOMERS' TITLE,
+             COUNT(*) TOTAL,
+             APEX_PAGE.GET_URL(p_page => 20) URL  -- Replace 11 with the correct page ID for projects
+        FROM CUSTOMER_INFO;
+      
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--styleB
+    - t-Region-orderBy--center
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 32310640247685864925
+    appearance: 
+      layout: Grid
+      grid-columns: 2 Columns
+
+    card: 
+      primary-key-column-1: SL
+
+    title: 
+      advanced-formatting: false
+      column: TOTAL
+
+    subtitle: 
+      advanced-formatting: false
+      column: TITLE
+
+    body: 
+      advanced-formatting: false
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Image URL
+      image-url: '&ICON.'
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: Full Card ===================================
+      id: 32310640714291864926
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to URL
+        target: '&URL.'
+
